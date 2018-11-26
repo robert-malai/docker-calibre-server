@@ -47,7 +47,7 @@ apk add py-html5lib --no-cache --repository http://dl-3.alpinelinux.org/alpine/e
  /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib && \
  echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf && \
  wget -O- ${CALIBRE_INSTALLER_SOURCE_CODE_URL} | python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main(install_dir='/opt', isolated=True)" && \
- chown abc:abc -R /opt/calibre
+ chown abc:abc -R /opt/calibre \
 
 # cleanup
  apk del --purge \
