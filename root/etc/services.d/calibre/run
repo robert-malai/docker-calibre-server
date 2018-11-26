@@ -1,6 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 exec \
-	s6-setuidgid abc /opt/calibre/content-server \
+	s6-setuidgid abc /opt/calibre/calibre-server \
   --port 8080 \
+  --enable-local-write \
   /books

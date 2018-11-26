@@ -1,1 +1,16 @@
 #!/usr/bin/with-contenv bash
+
+# make folders
+mkdir -p \
+	/config/calibre
+
+ mkdir -p \
+	/config/calibre/tmp
+
+ mkdir -p \
+	/config/cache/calibre/
+
+# permissions
+chown abc:abc -R \
+	/config \
+	/opt/calibre

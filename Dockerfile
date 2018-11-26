@@ -11,6 +11,7 @@ ENV CALIBRE_INSTALLER_SOURCE_CODE_URL https://raw.githubusercontent.com/kovidgoy
 ENV CALIBRE_CONFIG_DIRECTORY="/config/calibre/"
 ENV CALIBRE_TEMP_DIR="/config/calibre/tmp/"
 ENV CALIBRE_CACHE_DIRECTORY="/config/cache/calibre/"
+ENV CALIBRE_OVERRIDE_DATABASE_PATH="/config/calibre/metadata.db"
 
 # install build packages
 RUN \
@@ -47,7 +48,6 @@ apk add py-html5lib --no-cache --repository http://dl-3.alpinelinux.org/alpine/e
  /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib && \
  echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf && \
  wget -O- ${CALIBRE_INSTALLER_SOURCE_CODE_URL} | python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main(install_dir='/opt', isolated=True)" && \
- chown abc:abc -R /opt/calibre && \
 
 # cleanup
  apk del --purge \
@@ -64,4 +64,4 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 8080
-VOLUME /books /downloads
+VOLUME /config /books /downloads
